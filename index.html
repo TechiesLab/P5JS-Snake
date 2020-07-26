@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snake</title>
+  <link rel="shortcut icon" type="image/png" href="images/ico_full.png"/>
+  <link rel="stylesheet" href="stylesheet/prism.css">
+  <link rel="stylesheet" href="stylesheet/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(images/snake_background.jpg);">
+    <div id="class-languages">
+      <i class="fab fa-html5 mr-1" style="color: #f84820"></i>
+      <i class="fab fa-css3-alt mr-1" style="color: #1970b5"></i>
+      <i class="fab fa-js-square mr-1" style="color: #FFE01B"></i>
+    </div>
+    <div class="container">
+      <div class="main">
+        <img src="images/logo.png" alt="">
+        <div class="class-title">
+          <h1>Snake</h1>
+        </div>
+      </div>
+      <p>Défi destiné à apprendre à utiliser les classes dans un projet plus compliqué.</p>
+      <a class="btn btn-primary tl-button" href="#challenge" role="button">Commencer !</a>
+    </div>
+  </div>
+
+  <div class="container" id="challenge">
+    <div class="gamification">
+      <div class="progress">
+        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <div class="alert alert-danger" role="alert">
+        A simple danger alert—check it out!
+      </div>
+    </div>
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link done task" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              Etape 1 - Défis à compléter avant celui-ci
+            </button>
+          </h2>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Avant de t'attaquer à ce défi, on te conseille de compléter les défis suivants:</p>
+            <ol>
+              <li><a href="https://techieslab.github.io/year-prediction_instructions/" target="_blank">En 2020 je serai...</a></li>
+              <li><a href="https://techieslab.github.io/rainbow_instructions/" target="_blank">Ça va bien aller</a></li>
+              <li><a href="https://techieslab.github.io/balloon_instructions/" target="_blank">Péter ta balloune</a></li>
+              <li><a href="https://techieslab.github.io/soap-bubble-adv_instructions/" target="_blank">Bulles de savant</a></li>
+              <li><a href="https://techieslab.github.io/classes-intro_instructions/" target="_blank">La nuit étoilée</a></li>
+              <li><a href="https://techieslab.github.io/dancing-students_instru/" target="_blank">Les étu-danses</a></li>
+            </ol>
+          </div>
+        </div>
+      </div> <!-- end of card -->
+
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Etape 2 - Connexion à P5.js
+            </button>
+          </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Première chose avant de commencer à travailler sur n'importe quel projet p5.js: <strong>connecte-toi <a href="https://editor.p5js.org/" target="_blank">à ton compte</a></strong> en cliquant sur "Log in".</p>
+            <img src="images/log_in.png" class="img-shadow mb-3" alt="">
+
+            <div class="alert alert-warning" role="alert">
+              <p>
+                <i class="fas fa-exclamation-circle"></i>
+                Ça semble bête à dire... mais n'oublie pas de te connecter à ton compte avant de commencer à travailler! Cela te permettra de sauvegarder gratuitement ton travail (tes <em>sketchs</em>) sur les serveurs de p5.js. Si tu ne le fais pas, tu dois alors télécharger les fichers localement (sur ton ordinateur) et s'il arrive quoique ce soit, tu risques de perdre tout ton travail 😢
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end of card -->
+
+      <div class="card">
+        <div class="card-header" id="heading3">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed task" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+              Etape 3 - Un nouveau fichier
+            </button>
+          </h2>
+        </div>
+        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>L'objectif de ce défi, c'est de créer un jeu en utilisant les classes. Tu auras besoin de comprendre un minimum à quoi servent les classes avant de commencer, mais tu n'as pas besoin d'une connaissance parfaite, comme tu apprendras à mieux les utiliser à travers ce challenge.</p>
+            
+            <p>On va coder le fameux jeu de <i>Snake</i>, un jeu d'arcade qui était très populaire dans le début dans années '80.</p>
+            
+            <p>Pour ceux et celles qui ne connaissent pas le jeu: Le joueur doit contrôler un <b>serpent</b>, qui doit se déplacer dans un cadre pour manger des <b>pommes</b>. Lorsqu'il mange une pomme, il devient plus long, mais gagne aussi des points. Lorsque le serpent fonce dans le mur <u>ou</u> dans soi-même, il meurt. Le but est d'obtenir un serpent le plus long possible.</p>
+
+            <p>Tu peux essayer <a href="https://www.google.com/search?q=play+snake">la version que propose Google</a>. Ce jeu est bien sûr plus rafiné que ce qu'on compte créer, mais on pourra s'inspirer de leur jeu pour créer le notre.</p>
+
+            <img src="images/snake_google.png" class="img-shadow flexgif mb-3" alt="Jeu de Snake Google">
+
+            <p>Notre jeu va être un peu plus simple que celui de Google. On va se concentrer sur les éléments principales du jeu d'abord, c'est-à-dire le <b>serpent</b> et les <b>pommes</b>. On ne va pas se concentrer sur les graphismes au début, comme on sait déjà faire ça!</p>
+
+            <p>On a mentionné plus haut qu'on allait utiliser des classes. Peux tu deviner quel(s) objet(s) on va mettre dans des classes?</p>
+
+            <p>
+              <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint3a" role="button" aria-expanded="false" aria-controls="collapseHint3a">Indice</a>
+            </p>
+            <div class="collapse mb-3" id="collapseHint3a">
+              <div class="card card-body">
+                <p>On a deux objets principaux dans notre jeu, comme mentionné plus tôt: Le <b>serpent</b> et les <b>pommes</b>. Pourtant un des deux objets est bien plus simple que l'autre, et ne requiert pas vraiment une classe.</p>
+              </div>
+            </div>
+
+            <p>
+              <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer3a" role="button" aria-expanded="false" aria-controls="collapseAnswer3a">Réponse</a>
+            </p>
+            <div class="collapse mb-3" id="collapseAnswer3a">
+              <div class="card card-body">
+                <p>Bien vu, on va créer une seule classe dans notre code, et cette classe répresentera le <b>serpent</b>! </p>  
+              </div>
+            </div>
+
+            <p>Pour alléger le code, on va placer notre classe dans un fichier séparé. Tu peux aller créer ce nouveau fichier. Appelle-le quelque chose de répresentatif, comme par exemple <code>snake.js</code> ("snake" veut dire "serpent" en anglais).</p>
+            <div class="alert alert-warning" role="alert">
+              <p>
+                <i class="fas fa-exclamation-circle"></i>
+                Il est important que ton nom de fichier se termine par <code>.js</code>, comme cela indique que c'est un fichier avec du JavaScript à l'intérieur!
+              </p>
+            </div>
+            <img src="images/new_file.png" class="img-shadow flexgif mb-3 w-25" alt="nouveau Fichier">
+
+            <p>Finalement il va falloir importer ce fichier dans ton code. Parce que pour le moment, le code ne sait pas qu'il doit utiliser le fichier <code>snake.js</code>. Pour ce faire, va dans le fichier <code>index.html</code>. Ce fichier est le fichier qui affiche ton code, il est très important!</p>
+
+            <p>Pour le moment il ressemble à ceci: </p>
+
+            <pre><code class="language-markup">
+              &lt;!DOCTYPE html>
+              &lt;html lang="en">
+                &lt;head>
+                  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js">&lt;/script>
+                  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js">&lt;/script>
+                  &lt;link rel="stylesheet" type="text/css" href="style.css">
+                  &lt;meta charset="utf-8" />
+
+                &lt;/head>
+                &lt;body>
+                  &lt;script src="sketch.js">&lt;/script>
+                &lt;/body>
+              &lt;/html>
+            </code></pre>
+
+            <p>Tu vois la 3e ligne du bas? Celle-ci: 
+              <pre><code class="language-markup">&lt;script src="sketch.js">&lt;/script></code></pre>
+              Tu peux la copier et la remettre pile en dessous, en changeant le <code class="language-markup">src=""</code> pour mettre le bon nom de fichier.
+            </p>
+
+            <p>
+              <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer3a" role="button" aria-expanded="false" aria-controls="collapseAnswer3a">Réponse</a>
+            </p>
+            <div class="collapse mb-3" id="collapseAnswer3a">
+              <div class="card card-body">
+                <p>Ton code doit ressembler à ceci du coup:</p> 
+                <pre><code class="language-markup">
+                  &lt;!DOCTYPE html>
+                  &lt;html lang="en">
+                    &lt;head>
+                      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js">&lt;/script>
+                      &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js">&lt;/script>
+                      &lt;link rel="stylesheet" type="text/css" href="style.css">
+                      &lt;meta charset="utf-8" />
+
+                    &lt;/head>
+                    &lt;body>
+                      &lt;script src="sketch.js">&lt;/script>
+                      &lt;script src="snake.js">&lt;/script>
+                    &lt;/body>
+                  &lt;/html>
+                </code></pre> 
+              </div>
+            </div>
+
+            <p>Super! On est prêts à coder maintenant!</p>
+
+      </div>
+    </div>
+  </div>  <!-- end of card -->
+
+  <div class="card">
+    <div class="card-header" id="heading4">
+      <h2 class="mb-0">
+        <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+          Etape 4 - La classe
+        </button>
+      </h2>
+    </div>
+    <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+      <div class="card-body">
+        
+        <p>On va maintenant procéder à la création de notre classe! Te souviens tu comment créer une classe?</p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint3a" role="button" aria-expanded="false" aria-controls="collapseHint3a">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint3a">
+          <div class="card card-body">
+            <p>La base de la classe ressemble à ceci:</p>
+            <pre><code class="language-js">
+              class NomDeLaClasse {
+                // Code de la class
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Toutes les classes ont une <i>méthode</i> (Une fonction dans une classe) en commun. Te souviens tu de laquelle il s'agit?
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint3b" role="button" aria-expanded="false" aria-controls="collapseHint3b">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint3b">
+          <div class="card card-body">
+            <p>C'est la méthode <code>contructor()</code></p>
+            <pre><code class="language-js">
+              constructor() {
+                // Code du constructor
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Super! Place donc maintenant la méthode <code>constructor()</code> dans ta classe.</p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseHint3e" role="button" aria-expanded="false" aria-controls="collapseHint3e">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint3e">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              class Snake {
+                constructor() {
+                  // Code du constructor
+                }
+                // Restant du code de la classe
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Dans <code>sketch.js</code>, on veut maintenant créer une <i>instance</i> de cette classe (Une <i>instance</i> est un objet qui suit les règles de la classe. Tu peux penser à la classe comme étant une classe sociale, et les instances comme étant les personnes appartenant à cette classe sociale).</p>
+
+        <p>Pour créer une <i>instance</i> d'une classe, on utilise le mot <code>new NomDeLaClasse()</code>. Mais on ne veut créer qu'une seule instance, comme on n'aura qu'un seul serpent. Tu dois donc la définir dans la <b>fonction</b> (Ici c'est bien une fonction comme on n'est pas à l'intérieur d'une classe!) <code>setup()</code>.</p>
+
+        <div class="alert alert-warning" role="alert">
+          <p>
+            <i class="fas fa-exclamation-circle"></i>
+            Pour pouvoir sauvegarder ton <i>instance</i> et la ré-utiliser par après, tu dois la sauvegarder dans une variable! Et comme on veut utiliser cette instance plus tard dans une autre fonction (La fonction <code>draw()</code>), tu dois <b>définir</b> la variable à l'extérieur de la fonction, mais <b>l'assigner</b> à l'intérieur de la fonction!
+          </p>
+        </div>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint4c" role="button" aria-expanded="false" aria-controls="collapseHint4c">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint4c">
+          <div class="card card-body">
+            <p>Tu dois <b>définir</b> la variable à l'extérieur de la fonction <code>setup()</code>, mais <b>l'assigner</b> à l'intérieur de la fonction <code>setup()</code>!</p>
+            <pre><code class="language-js">
+              // Définir la variable
+
+              function setup() {
+                // Assigner la variable
+                createCanvas(400, 400);
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer4b" role="button" aria-expanded="false" aria-controls="collapseAnswer4b">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer4b">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              // Définir la variable
+              let snake;
+
+              function setup() {
+                // Assigner la variable
+                snake = new Snake();  
+
+                createCanvas(400, 400);
+              }
+            </code></pre>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div> <!-- end of card -->
+
+  <div class="card">
+    <div class="card-header" id="heading5">
+      <h2 class="mb-0">
+        <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+          Etape 5 - Première méthode
+        </button>
+      </h2>
+    </div>
+    <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
+      <div class="card-body">
+        
+        <p>Une caractéristique importante du serpent est qu'on puisse le voir. Sans cela, le jeu n'a pas réellement de sens.</p>
+
+        <p>On doit donc créer une première <i>méthode</i> dans la classe <code>Snake</code>, qui lui permettra d'être vu.</p>
+
+        <p>En général, on essaye de choisir des noms de variables, de fonctions, de classes, de méthodes, ... qui ont un sens, et en général qui ont un sens en anglais, comme c'est la langue universelle des développeurs. Pour une méthode qui <b>montre</b> le serpent, on peut donc choisir <code>show()</code>.</p>
+
+        <p>Essaie de définir la méthode <code>show()</code> et fait en sorte qu'elle dessine un simple rectangle la où tu veux de la taille que tu veux. Ensuite, appelle cette méthode dans <code>sketch.js</code></p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint5a" role="button" aria-expanded="false" aria-controls="collapseHint5a">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint5a">
+          <div class="card card-body">
+            <p>Pour définir une méthode, tu dois insérer ce code dans ta classe</p>
+            <pre><code class="language-js">
+              nomDeLaMéthode() {
+                // Code de la méthode
+              }
+            </code></pre>
+            <p>Et pour ensuite appeller la méthode, tu peux simplement faire</p>
+            <pre><code class="language-js">
+              Snake.nomDeLaMéthode();
+            </code></pre>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer5a" role="button" aria-expanded="false" aria-controls="collapseAnswer5a">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer5a">
+          <div class="card card-body">
+            <p>Dans ma méthode, je dessine un carré en haut à gauche de 20 pixels par 20 pixels</p>
+            <pre><code class="language-js">
+              class Snake {
+                constructor() {
+
+                }
+                show() {
+                  rect(0, 0, 20, 20);
+                }
+              }
+            </code></pre>
+            <p>Ensuite on appelle la fonction dans la fonction <code>draw()</code></p>
+            <pre><code class="language-js">
+              let snake;
+
+              function setup() {
+                snake = new Snake();
+                createCanvas(400, 400);
+              }
+
+              function draw() {
+                background(220);
+                snake.show();
+              }
+            </code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div> <!-- end of card -->
+
+    <div class="card">
+    <div class="card-header" id="heading6">
+      <h2 class="mb-0">
+        <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+          Etape 6 - Bouger le carré
+        </button>
+      </h2>
+    </div>
+    <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionExample">
+      <div class="card-body">
+        
+        <p>On peut montrer notre petit carré maintenant, mais on ne sait toujours pas le bouger. On doit détecter lorsqu'on appuie sur une touche. On peut faire cela en utilisant la fonction <code>keyPressed()</code>! Définis cette fonction dans ton code, après les fonctions <code>setup()</code> et <code>draw()</code></p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer6a" role="button" aria-expanded="false" aria-controls="collapseAnswer6a">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer6a">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              fonction setup() {
+                // ...
+              }
+              function draw() {
+                // ...
+              }
+              function keyPressed() {
+                // ...
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Mais cette nouvelle function est inutile si on ne peut pas déterminer quelle touche est pressée. Heureusement pour nous, on peut utiliser le paramètre <code>keyCode</code> à l'intérieur de la fonction. Essaie de <i>logger</i> ce paramètre à l'intérieur de la fonction pour voir ce à quoi il ressemble!</p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseHint6a" role="button" aria-expanded="false" aria-controls="collapseHint6a">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint6a">
+          <div class="card card-body">
+            <p>Pour <i>logger</i> une variable dans la console, tu peux utiliser <code>console.log(nomDeVariable).</code></p>
+          </div>
+        </div>
+
+        <p>Détermine les <code>keyCode</code> des 4 flèches et indique les dans les cases suivants.</p>
+
+        <form id="fonction-quiz">
+          <div class="row mb-3">
+            <div class="col">
+              <input type="number" class="form-control">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control">
+            </div>
+            <div class="col">
+              <input type="number" class="form-control">
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit" id="fonction-quiz-submit">Corriger!</button>
+        </form>
+
+        <p>Ces nombres qui apparaissent dans la console ne nous apprennent pas énormement au final. On aimerait bien <i>logger</i> "Flèche Haut" quand on appuie sur la flèche en haut par exemple.</p>
+
+        <p>Pour ce faire, on va utiliser une <b>condition</b>. Une <b>condition</b> est une bloc comme le suivant:</p>
+
+        <pre><code class="language-js">
+          if( condition ) {
+            // Code à exécuter si la condition est vrai
+          }
+        </code></pre>
+
+        <p>
+          La condition est quelque chose qui ressemble à 
+          <pre><code class="language-js">variable === valeur</code></pre>
+          Dans ce cas ci, on veut vérifier si le <code>keyCode</code> vaut un certain nombre. Si c'est le cas, on veut <i>logger</i> "Flèche Haut".
+        </p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer6b" role="button" aria-expanded="false" aria-controls="collapseAnswer6b">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer6b">
+          <div class="card card-body">
+            <p>À toi de complèter les <code>...</code>.</p>
+            <pre><code class="language-js">
+              function keyPressed() {
+                // Flèche Haut
+                if(keyCode === 38) {
+                  console.log("Flèche Haut");
+                }
+                // Flèche Droite
+                // ...
+                // Flèche Bas
+                // ...
+                // Flèche Droite
+                // ...
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Bon c'est bien gentil que la console nous dise quelle flèche on touche, mais notre carré ne bouge toujours pas... Il nous faut transmettre l'information à la class <code>Snake</code>, et après il faudra créer une méthode pour bouger.</p>
+
+        <p>Commençons par transmettre l'information à la classe. Ce n'est en réalité aps super compliqué! On peut créer des variables dans notre classe, et les appeller en utilisant <code>snake.nomDeVariable</code>.</p>
+
+        <p>Plutôt que de logger "Flèche Haut", etc.. lorsqu'on appuie sur une flèche, on peut assigner la valeur "Haut" à la variable <code>snake.direction</code>. Ensuite, dans notre méthode <code>show()</code>, on peut ajouter un <code>console.log(this.direction)</code>.</p>
+
+        <div class="alert alert-warning" role="alert">
+          <p>
+            <i class="fas fa-exclamation-circle"></i>
+            Dans une classe on appelle les variables en utilisant le mot clé <code>this</code>, qui fait référence à l'instance qui l'a appellée. Ainsi, une variable est propre à l'instance.
+          </p>
+        </div>
+
+        <p>Bon... On a maintenant réussi à faire logger l'instance dans quelle direction elle veut aller. On doit maintenant définir une méthode qui fait bouger l'instance.</p>
+
+        <p>Cette nouvelle méthode fait bouger le serpent, donc on peut l'appeller <code>move()</code>. Son but est de faire changer la position X et Y du serpent. Donc pour commencer, on doit placer ces positions dans des variables propres à l'instance. Pour ce faire, on doit les définir dans le <code>constructor()</code></p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer6c" role="button" aria-expanded="false" aria-controls="collapseAnswer6c">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer6c">
+          <div class="card card-body">
+            On peut déjà assigner nos variables avec des valeurs, étant les valeurs initiales.
+            <pre><code class="language-js">
+              constructor() {
+                this.positionX = 0;
+                this.positionY = 0;
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Dans notre méthode <code>show()</code>, on va plutôt utiliser ces variables. Il te suffit de changer les 2 premiers paramètres de ta fonction <code>rect()</code></p>
+
+        <p>Finalement, on veut créer une nouvelle méthode, la méthode <code>move()</code>. Cette méthode doit traîter 4 cas dépendant de quelle flèche a été pressée en dernier. On a déjà stocké cette valeur dans une variable, la variable <code>this.direction</code>.</p>
+
+        <p>Pour bouger vers le haut, on peut simplement faire le suivant:</p>
+
+        <pre><code class="language-js">
+          move() {
+            // Bouger vers le haut
+            if(this.direction === "Haut") {
+              this.positionY -= 20;
+            }
+            // Bouger vers la droite
+            // ...
+            // Bouger vers le bas
+            // ...
+            // Bouger vers la gauche
+            // ...
+          }
+        </code></pre>
+
+        <p>Tu peux compléter les autres parties ;-)</p>
+
+        <p>Il ne nous reste plus qu'une chose à faire pour que le serpent sache bouger. Sais-tu ce qu'on a oublié?</p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapsHint6c" role="button" aria-expanded="false" aria-controls="collapseHint6c">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint6c">
+          <div class="card card-body">
+            On n'a jamais appellé notre nouvelle méthode
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer6d" role="button" aria-expanded="false" aria-controls="collapseAnswer6d">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer6d">
+          <div class="card card-body">
+            Dans la fonction <code>draw()</code>, tu peux appeller la méthode sur ton instance
+            <pre><code class="language-js">
+              function draw() {
+                // ...
+                snake.move();
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Tu trouves peut-être que le serpent bouge trop rapidement. Pour le faire bouger plus lentement, tu peux adapter le <code>frameRate()</code> dans la fonction <code>setup()</code></p>
+      </div>
+    </div>
+  </div> <!-- end of card -->
+
+  <div class="card">
+    <div class="card-header" id="heading7">
+      <h2 class="mb-0">
+        <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+          Etape 7 - Grandir
+        </button>
+      </h2>
+    </div>
+    <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordionExample">
+      <div class="card-body">
+        
+        <p>Notre serpent doit également être capable de grandir lorsqu'il mange une pomme. On n'a pas encore codé les pommes, et on ne va pas encore le faire. En effet, on va simplement dire que pour grandir, il faut appuyer sur la touche espace. Retrouve le <code>keyCode</code> de la touche espace comme tu as retrouvé les autres <code>keyCode</code> plus tôt. Lorsqu'on appuie sur la touche espace, on aimerait effectuer la méthode <code>grow()</code> du serpent, qui le fera grandir. Il nous faut coder cette méthode.</p>
+
+        <p>D'abord, ajoute une condition dans la fonction <code>keyPressed()</code> pour vérifier si la touche espace est pressée, et si c'est le cas effectuer la méthode <code>grow()</code> du serpent (Même si elle n'existe pas encore).</p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer7a" role="button" aria-expanded="false" aria-controls="collapseAnswer7a">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer7a">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              function keyPressed() {
+                // ...
+                if(keyCode === 32) {
+                  snake.grow();
+                }
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Si tu essaies d'appuyer sur la touche espace, tu devrais voir une erreur comme la méthode n'existe pas! Allons donc la créer. Pour un début, fait simplement en sorte que ta méthode logge un message.</p>
+        
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer7b" role="button" aria-expanded="false" aria-controls="collapseAnswer7b">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer7b">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              grow() {
+                console.log("Je grandis!");
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Sois sûr que ton code fonctionne bien. Si tu vois le message, c'est que tu as bien créé ta méthode.</p>
+
+        <p>On va devoir changer quelques choses fondamentales dans notre classe. En effet, on doit maintenant se souvenir de toute une <b>liste</b> de blocs qui composent le serpent. Chaque bloc est composé d'une positionX et d'une positionY. </p>
+
+        <pre><code class="language-js">
+          constructor() {
+            // La liste est vide de base
+            this.snakeBlocks = [];
+            // On ajoute le premier bloc
+            this.snakeBlocks[0] = {positionX: 0, positionY: 0};
+            // ...
+          }
+        </code></pre>
+
+        <p>Si on essaie de faire marcher le code maintenant, rien n'a changé. On doit bien sûr utiliser ces nouvelles variables quelque part! Commençons par changer la méthode <code>show()</code>. On ne veut pas juste montrer un rectangle, mais tous les rectangles!</p>
+
+        <pre><code class="language-js">
+          show() {
+            for(let i = 0; i < this.snakeBlocks.length; i++) {
+              rect(this.snakeBlocks[i].positionX, this.snakeBlocks[i].positionY, 20, 20);
+            }
+          }
+        </code></pre>
+
+        <p>Le <code>for(...) {...}</code> est une boucle, et on boucle sur tous les blocs du serpent. Le <code>i</code> va en fait de 0 jusqu'au nombre de blocs -1, et on utilise le <code>i</code> pour repérer de quel bloc on parle à chaque itération.</p>
+
+        <p>Maintenant le code ne fonctionne plus! Hmm... Qu'est ce qu'on doit encore changer pour que cela fonctionne?</p>
+
+        <p>Oui! On doit changer la méthode <code>move()</code>. Pour le moment, elle ne fait que changer les variables <code>positionX</code> et <code>positionY</code>, mais on n'utiliser plus ces variables directement. Souviens-toi qu'on avait dit que pour simuler le mouvement on va toujours effacer le dernier bloc et en re-dessiner un au début!</p>
+
+        <p>Pour effacer le dernier code, on doit simplement l'enlever de notre liste. Pour enlever le dernier élément d'une liste, on utilise la méthode <code>liste.pop()</code>.</p>
+        
+        <pre><code class="language-js">
+          move() {
+            // Code pour ajuster positionX et positionY
+            this.snakeBlocks.pop();
+          }
+        </code></pre>
+
+        <p>Bon ok, c'est encore pire qu'avant, maintenant le seul bloc qu'on avait (Qui ne bougeait pas), disparaît immédiatement... Aie... Mais c'est parce qu'on ne le re-dessine pas!</p>
+
+        <p>Pour ajouter un nouvel élément au début d'une liste, on utilise la méthode <code>liste.unshift(élément)</code>. Souviens-toi à quoi ressemblait le premier élément et essaie de re-créer cet élément avec les nouvelles variables.</p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseAnswer7c" role="button" aria-expanded="false" aria-controls="collapseAnswer7c">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer7c">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              move() {
+                // Code pour ajuster positionX et positionY
+                this.snakeBlocks.pop();
+                this.snakeBlocks.unshift({positionX: this.positionX, positionY: this.positionY});
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>C'est super! Notre serpent sait de nouveau "bouger"! Mais la touche espace ne fait toujours pas réellement grandir le serpent. En fait, pour le faire grandir, on va simplement copier le dernier élément de la liste. Ainsi, le serpent aura une longueur plus longue et ce sera bouclé. A-tu une idée de comment faire?</p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseAnswer7d" role="button" aria-expanded="false" aria-controls="collapseAnswer7d">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer7d">
+          <div class="card card-body">
+            Tu peux assigner <code>this.snakeBlocks[this.snakeBlocks.length]</code> (Il n'existe pas encore!) à la même valeur que <code>this.snakeBlocks[this.snakeBlocks.length-1]</code> (Dernier élément de la liste)
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer7e" role="button" aria-expanded="false" aria-controls="collapseAnswer7e">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer7e">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              grow() {
+                this.snakeBlocks[this.snakeBlocks.length] = this.snakeBlocks[this.snakeBlocks.length-1];
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>SUPER! On peut maintenant faire grandir notre serpent à l'aide de la touche espace! Bien joué!</p>
+
+      </div>
+    </div>
+  </div> <!-- end of card -->
+
+</div>
+</div>
+</div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://techieslab.be/"><i class="fas fa-globe"></i></i></a>
+    <a href="https://www.facebook.com/TechiesLabBrussels"><i class="fab fa-facebook"></i></a>
+    <a href="https://twitter.com/TechiesLab"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="footer-copyright">
+    <a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/3298561-faites-votre-mise-en-page-avec-flexbox#/id/r-3298711" rel="noopener noreferrer" target="_blank" class="alert-link copyright">
+      <i class="far fa-copyright"></i>
+      2020 Techies Lab ASBL. All rights reserved.
+    </a>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="javascript/prism.js"></script>
+<script type="text/javascript" src="javascript/app.js"></script>
+</body>
+</html>
