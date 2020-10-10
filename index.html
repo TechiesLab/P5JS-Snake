@@ -397,7 +397,7 @@
         <div class="collapse mb-3" id="collapseAnswer6a">
           <div class="card card-body">
             <pre><code class="language-js">
-              fonction setup() {
+              function setup() {
                 // ...
               }
               function draw() {
@@ -421,6 +421,19 @@
           </div>
         </div>
 
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseHint6ad" role="button" aria-expanded="false" aria-controls="collapseHint6ad">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint6ad">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              function keyPressed() {
+                console.log(keyCode);
+              }
+            </code></pre>
+          </div>
+        </div>
+
         <p>Détermine les <code>keyCode</code> des 4 flèches et indique les dans les cases suivants.</p>
 
         <form id="fonction-quiz">
@@ -440,6 +453,8 @@
           </div>
           <button class="btn btn-primary" type="submit" id="fonction-quiz-submit">Corriger!</button>
         </form>
+
+        <br />
 
         <p>Ces nombres qui apparaissent dans la console ne nous apprennent pas énormement au final. On aimerait bien <i>logger</i> "Flèche Haut" quand on appuie sur la flèche en haut par exemple.</p>
 
@@ -493,9 +508,46 @@
           </p>
         </div>
 
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseHint6ad" role="button" aria-expanded="false" aria-controls="collapseHint6ad">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseHint6ad">
+          <div class="card card-body">
+            <p>Dans ton <code>sketch.js</code>, tu veux changer la direction à chaque fois qu'une touche est pressée.</p>
+            <pre><code class="language-js">
+              function keyPressed() {
+                if(keyCode === 38) {
+                  snake.direction = "Haut"
+                }
+                // Autres directions
+                // ...
+              }
+            </code></pre>
+            <p>Dans ton <code>snake.js</code>, tu veux <i>logger</i> la direction à chaque fois que ton serpent s'affiche.</p>
+            <pre><code class="language-js">
+              class Snake() {
+                // constructor
+                display() {
+                  console.log(this.direction)
+                  // ....
+                }
+              }
+            </code></pre>
+          </div>
+        </div>
+
         <p>Bon... On a maintenant réussi à faire logger l'instance dans quelle direction elle veut aller. On doit maintenant définir une méthode qui fait bouger l'instance.</p>
 
-        <p>Cette nouvelle méthode fait bouger le serpent, donc on peut l'appeller <code>move()</code>. Son but est de faire changer la position X et Y du serpent. Donc pour commencer, on doit placer ces positions dans des variables propres à l'instance. Pour ce faire, on doit les définir dans le <code>constructor()</code></p>
+        <p>Cette nouvelle méthode fera bouger le serpent, donc on peut l'appeller <code>move()</code>. Son but est de faire changer la position X et Y du serpent. Donc pour commencer, on doit placer ces positions dans des variables propres à l'instance. Pour ce faire, on doit les définir dans le <code>constructor()</code></p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseAnswer6ca" role="button" aria-expanded="false" aria-controls="collapseAnswer6ca">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer6ca">
+          <div class="card card-body">
+            N'oublie pas que lorsque tu assignes un variable dans le constructor, tu dois utiliser le mot clé <code>this.</code>.
+          </div>
+        </div>
 
         <p>
           <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer6c" role="button" aria-expanded="false" aria-controls="collapseAnswer6c">Réponse</a>
@@ -538,11 +590,11 @@
         <p>Il ne nous reste plus qu'une chose à faire pour que le serpent sache bouger. Sais-tu ce qu'on a oublié?</p>
 
         <p>
-          <a class="btn btn-primary" data-toggle="collapse" href="#collapsHint6c" role="button" aria-expanded="false" aria-controls="collapseHint6c">Indice</a>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapseAnswer6caa" role="button" aria-expanded="false" aria-controls="collapseAnswer6caa">Indice</a>
         </p>
-        <div class="collapse mb-3" id="collapseHint6c">
+        <div class="collapse mb-3" id="collapseAnswer6caa">
           <div class="card card-body">
-            On n'a jamais appellé notre nouvelle méthode
+            On n'a jamais appellé notre nouvelle méthode.
           </div>
         </div>
 
@@ -551,7 +603,7 @@
         </p>
         <div class="collapse mb-3" id="collapseAnswer6d">
           <div class="card card-body">
-            Dans la fonction <code>draw()</code>, tu peux appeller la méthode sur ton instance
+            <p>Dans la fonction <code>draw()</code>, tu peux appeller la méthode sur ton instance</p>
             <pre><code class="language-js">
               function draw() {
                 // ...
@@ -640,7 +692,7 @@
 
         <p>Maintenant le code ne fonctionne plus! Hmm... Qu'est ce qu'on doit encore changer pour que cela fonctionne?</p>
 
-        <p>Oui! On doit changer la méthode <code>move()</code>. Pour le moment, elle ne fait que changer les variables <code>positionX</code> et <code>positionY</code>, mais on n'utiliser plus ces variables directement. Souviens-toi qu'on avait dit que pour simuler le mouvement on va toujours effacer le dernier bloc et en re-dessiner un au début!</p>
+        <p>Oui! On doit changer la méthode <code>move()</code>. Pour le moment, elle ne fait que changer les variables <code>positionX</code> et <code>positionY</code>, mais on n'utilise plus ces variables directement. Souviens-toi qu'on avait dit que pour simuler le mouvement on va toujours effacer le dernier bloc et en re-dessiner un autre au début!</p>
 
         <p>Pour effacer le dernier code, on doit simplement l'enlever de notre liste. Pour enlever le dernier élément d'une liste, on utilise la méthode <code>liste.pop()</code>.</p>
         
@@ -677,7 +729,7 @@
         </p>
         <div class="collapse mb-3" id="collapseAnswer7d">
           <div class="card card-body">
-            Tu peux assigner <code>this.snakeBlocks[this.snakeBlocks.length]</code> (Il n'existe pas encore!) à la même valeur que <code>this.snakeBlocks[this.snakeBlocks.length-1]</code> (Dernier élément de la liste)
+            <p>Tu peux assigner <code>this.snakeBlocks[this.snakeBlocks.length]</code> (Il n'existe pas encore!) à la même valeur que <code>this.snakeBlocks[this.snakeBlocks.length-1]</code> (Dernier élément de la liste)</p>
           </div>
         </div>
 
@@ -695,6 +747,287 @@
         </div>
 
         <p>SUPER! On peut maintenant faire grandir notre serpent à l'aide de la touche espace! Bien joué!</p>
+
+      </div>
+    </div>
+  </div> <!-- end of card -->
+
+  <div class="card">
+    <div class="card-header" id="heading8">
+      <h2 class="mb-0">
+        <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+          Etape 8 - Perdre
+        </button>
+      </h2>
+    </div>
+    <div id="collapse8" class="collapse" aria-labelledby="heading8" data-parent="#accordionExample">
+      <div class="card-body">
+        
+        <p>Normalement tu as maintenant un "serpent" qui peut bouger dans toutes les directions et grandir à l'aide de la touche espace. On va maintenant essayer de faire perdre notre serpent s'il fonce dans le mur.</p>
+
+        <p>Commencons par créer une nouvelle méthode qui vérifie si on a perdu. Une méthode peut <b>retourner</b> une valeur. Par exemple, on pourrait créer une méthode qui s'appelle "Fait-il beau aujourd'hui?" et qui nous répond oui ou non dépendant de la journée.</p>
+
+        <p>Notre méthode doit retourner Oui si on a perdu, et Non sinon. En langage ordinateur, on dit pas "Oui" ou "Non", mais <code>true</code> (Pour "Oui") et <code>false</code> (Pour "Non").</p>
+
+        <p>Pour faire en sorte que notre méthode retourne une valeur, on utilise le mot clé <code>return</code>. On a par exemple notre méthode <code>faitIlBeau()</code>:</p>
+
+        <pre><code class="language-js">
+          faitIlBeau() {
+            if(ilFaitBeau) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        </code></pre>
+
+        <p>Essaie de coder la méthode dont on a besoin pour vérifier si on a perdu. Appelle la méthode <code>lost()</code> (Anglais pour "Perdu") et fait simplement en sorte qu'elle retourne toujours <code>false</code>. Comme cela, pour un début du moins, on n'a jamais perdu.</p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer8a" role="button" aria-expanded="false" aria-controls="collapseAnswer8a">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer8a">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              class Snake() {
+                lost() {
+                  return false;
+                }
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Lorsqu'on a perdu, on n'a plus envie de voir le serpent. On préfere voir un message disant qu'on a perdu. Ainsi, tu peux placer le <code>snake.display()</code> de notre <code>sketch.js</code> dans une <b>condition</b> qui vérifie si <code>snake.lost()</code> est "Oui" ou "Non".</p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer8b" role="button" aria-expanded="false" aria-controls="collapseAnswer8b">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer8b">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              function draw() {
+                if(snake.lost() === false) {
+                  snake.display();
+                }
+                // ...
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Lorsqu'on n'est plus en vie, c'est à dire lorsqu'on a perdu, on aimerait qu'un text apparaisse sur l'écran nous disant qu'on a perdu. Tu peux changer la <b>condition</b> de la remarque précedente en un </p>
+        
+        <pre><code class="language-js">
+          if(...) {
+            //...
+          } else {
+            //...
+          }
+        </code></pre>
+        
+        <p>Dans le <code>else {//....}</code>, tu peux placer le code qui doit s'executer lorsque la condition n'est pas vérifiée.</p>
+
+        <p>Super. On doit maintenant un peu adapter notre méthode <code>lost()</code>... Commençons par la faire detecter si on est en dehors de l'écran!</p>
+
+        <p>Tu te souviens que la position de la tête du serpent est stoquée dans les variables <code>this.positionX</code> et <code>this.positionY</code>? Si la tête n'est pas en dehors de l'écran, alors le restant du serpent ne l'est pas non plus. Donc il nous suffit de vérifier si la tête est en dehors.</p>
+
+        <p>Si <code>positionX</code> est plus petit que 0, alors on sait que la tête est à gauche de l'écran, et donc sorti de l'écran. Ceci se code ainsi:</p>
+        
+        <pre><code class="language-js">
+          if(this.positionX < 0) {
+            // ....
+          }
+        </code></pre>
+
+        <p>On doit ajouter ce code dans la méthode <code>lost()</code>. Poir ce faire, il suffit de la rajouter dedans. Lorsque la condition est vraie, on veut que <code>snake.lost()</code> soit "Non", donc on veut retourner <code>false</code></p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer8c" role="button" aria-expanded="false" aria-controls="collapseAnswer8c">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer8c">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              lost() {
+                if(this.positionX < 0) {
+                  return false;
+                }
+                // ...
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Tu devrais être capable de faire un même raisonement pour vérifier si le serpent est <b>au dessus</b> de l'écran.</p>
+
+        <p>Pour vérifier si le serpent est à droite de l'écran, c'est un peu plus compliqué. La longueur totale sur l'axe gauche-droite (L'axe des X) est de 400. Si <code>this.positionX</code> vaut 400, cela veut dire que le premier carré a son coin supérieur droit sur le bord droite de l'écran, donc il est pile en dehors de l'écran. Donc pour vérifier s'il est en dehors à droite, on écrit le code suivant:</p>
+
+        <pre><code class="language-js">
+          if(this.positionX >= 400) {
+            // ....
+          }
+        </code></pre>
+
+        <p>Tu peux toi-même l'ajouter dans la méthode <code>lost()</code>. Tu peux aussi faire la vérification lorsque le serpent est <b>en dessous</b> de l'écran.</p>
+
+        <p>Essaie si ta méthode fonctionne! Normalement, il manque une petite chose... As-tu une idée de ce que c'est?</p>
+
+        <p>Ta méthode <code>lost()</code> ne retourne jamais la valeur <code>false</code>. Elle peut ne <b>rien</b> retourner, mais elle ne retourne jamais la valeur <code>false</code>... Pour règler cela, ajouter simplement un <code>return false;</code> tout à la fin de la méthode.</p>
+
+        <pre><code class="language-js">
+          lost() {
+            // Vérification pour "À gauche"
+            if(this.positionX < 0) {
+              return true;
+            }
+            // Vérification pour "À droite"
+            // Vérification pour "En haut"
+            // Vérification pour "En bas"
+
+            return false;
+          }
+        </code></pre>
+
+        <p>Maintenant, si la méthode n'a rien à retourner, elle va retourner <code>false</code>, et ton code devrait marcher!</p>
+
+      </div>
+    </div>
+  </div> <!-- end of card -->
+
+  <div class="card">
+    <div class="card-header" id="heading9">
+      <h2 class="mb-0">
+        <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+          Etape 9 - Pommes
+        </button>
+      </h2>
+    </div>
+    <div id="collapse9" class="collapse" aria-labelledby="heading9" data-parent="#accordionExample">
+      <div class="card-body">
+        
+        <p>Pour rendre le jeu plus réel, on va devoir ajouter des pommes pour faire grandir le serpent plutôt que de devoir appuyer sur la touche espace tout le temps.</p>
+
+        <p>On va faire en sorte que ce soit la classe du serpent qui dessine notre pomme. Ce sera beaucoup plus facile de cette façon pour vérifier si le serpent à mangé la pomme ou non.</p>
+
+        <p>Crée une nouvelle méthode qui s'appelle <code>apple()</code>. Commence par faire en sorte que cette méthode dessine un ractangle rouge quelque part.</p>
+
+        <pre><code class="language-js">
+          apple() {
+            fill("red");
+            rect(20, 20, 20, 20);
+          }
+        </code></pre>
+
+        <p>Essaie de reproduire ce code et de le lancer. Pour voir les effets, tu dois pas oublier d'appeller la méthode quelque part. Je te conseille d'appeller la fonction à la fin de ta méthode <code>show()</code>. N'oublie pas que comme tu es dans la classe, tu dois utiliser le mot clé <code>this.</code> pour l'appeller.</p>
+
+        <p>Normalement tu vois que ton serpent devient rouge aussi. C'est parce que tu as utilisé un <code>fill("red")</code> dans le code de ta <code>apple()</code>. Avant de dessiner les blocs de ton serpent, tu peux ajouter un <code>fill()</code> avec la couleur de ton choix pour le serpent.</p>
+
+        <p>Pour savoir où se trouve la pomme, on doit lui attribuer une variable. Tu peux appeller ces variables <code>this.appleX</code> et <code>this.appleY</code>. Commence par les placer à un endroit fixe sur l'écran.</p>
+
+        <pre><code class="language-js">
+          constructor() {
+            this.appleX = 20;
+            this.appleY = 20;
+          }
+        </code></pre>
+
+        <p>Pour vérifier si le serpent a mangé la pomme ou non, il faut vérifier si la tête se trouve au même endroit que la pomme. Si c'est le cas, on aimerait que le serpent grandisse. Comment vérfier si la tête se trouve au même endroit que la pomme?</p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapsHint9a" role="button" aria-expanded="false" aria-controls="collapsHint9a">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapsHint9a">
+          <div class="card card-body">
+            <p>On utilise les signes <code>&&</code> pour vériier si plusieurs conditions sont vérfiées. C'est une sorte de "et".</p>
+            <pre><code class="language-js">
+              if(this.positionX === this.appleX && this.positionY === this.appleY) {
+                // ...
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Lorsque cette condition est vraie, tu peux appeller la méthode <code>this.grow()</code>. Par ailleurs, tu peux appeller cette condition dans le code de <code>apple()</code>!</p>
+
+        <p>Donc on a maintenant un jeu où notre serpent bouge dans tous les sens, perd s'il touche le bord et grandis lorsqu'il mange une pomme. Il ne nous manque plus qu'à faire bouger la pomme entre chaque fois qu'on la mange!</p>
+
+        <p>On veut la faire apparaître sur les cases avec des coordonnées mulitples de 20. Comme cela, le serpent peut tomber pile dessus! Comment peut-tu produire un nombre aléatoire entre 0 et 380 qui est un mulitple de 20?</p>
+
+        <pre><code class="language-js">
+          random(20);
+        </code></pre>
+
+        <p>Ce code va produire un nombre aléatoire entre 1 et 20. Mais il peut très bien être 17.3218... Nous on aimerait des nombres entiers!</p>
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#collapsHint9b" role="button" aria-expanded="false" aria-controls="collapsHint9b">Indice</a>
+        </p>
+        <div class="collapse mb-3" id="collapsHint9b">
+          <div class="card card-body">
+            <p>Pour prendre le nombre entier le plus proche d'un nombre à virgule, on utilise la function <code>floor()</code>. Par exemple:</p>
+            <pre><code class="language-js">
+              floor(17.2) = 17;
+              floor(3.1415) = 3;
+            </code></pre>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer9a" role="button" aria-expanded="false" aria-controls="collapseAnswer9a">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer9a">
+          <div class="card card-body">
+            <p>Il nous faut commencer par trouver un nombre aléatoire entre 1 et 20, et ensuite le multiplier par 20. Ceci va donner un mulitple aléatoire de 20 entre 1 et 400.</p>
+            <pre><code class="language-js">
+              20 * floor(random(20));
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Lorsqu'on mange la pomme, on aimerait changer sa position. On peut simplement re-assigner les variables <code>this.appleX</code> et <code>this.appleY</code> à un multiple de 20 aléatoire entre 0 et 400</p>
+
+        <p>
+          <a class="btn btn-danger" data-toggle="collapse" href="#collapseAnswer9b" role="button" aria-expanded="false" aria-controls="collapseAnswer9b">Réponse</a>
+        </p>
+        <div class="collapse mb-3" id="collapseAnswer9b">
+          <div class="card card-body">
+            <pre><code class="language-js">
+              apple() {
+                // Dessiner la pomme
+                
+                if(this.positionX === this.appleX && this.positionY === this.appleY) {
+                  this.grow();
+
+                  this.appleX = 20 * floor(random(20));
+                  this.appleY = 20 * floor(random(20));
+                }
+              }
+            </code></pre>
+          </div>
+        </div>
+
+        <p>Dernière modification: Au début du jeu, tu peux placer la pomme à un endroit aléatoire.</p>
+
+      </div>
+    </div>
+  </div> <!-- end of card -->
+
+  <div class="card">
+    <div class="card-header" id="heading10">
+      <h2 class="mb-0">
+        <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+          Etape 10 - Tout rendre plus beau
+        </button>
+      </h2>
+    </div>
+    <div id="collapse10" class="collapse" aria-labelledby="heading10" data-parent="#accordionExample">
+      <div class="card-body">
+        
+        <p>Tu as maintenant pratiquement fini le jeu. Bien sûr, tu peux rajouter d'autres fonctionalités, mais les bases sont là! </p>
+
+        <p>Ce que je te conseille est de t'attarder un peu sur les graphismes de ton jeu. En effet, la pomme peut etre rendue plus jolie, et le serpent aussi. Ton message de perte peut surement être rendu très joli aussi! À toi de personaliser ton jeu à fond!</p>
+
+        <p>Dans tous les cas c'est super que tu aies réussi à finir ce jeu <b>compliqué</b>! Bravo!</p>
 
       </div>
     </div>
